@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config()
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -17,7 +18,6 @@ var app = express();
 var mongoose = require('mongoose');
 
 // Set up mongoose connection
-var mongoDB = 'mongodb+srv://minestew:Salad0527!@cluster0.6hi2m.mongodb.net/local_library?retryWrites=true&w=majority';
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true});
 
